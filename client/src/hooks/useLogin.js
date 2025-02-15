@@ -5,7 +5,7 @@ import { toast } from "sonner";
 
 const useLogin = () => {
     const navigate = useNavigate();
-            const { setUserInfo } = useAppStore();
+    const { setUserInfo } = useAppStore();
     const [loading, setLoading] = useState(false);
 
     const login = async (formData) => {
@@ -16,6 +16,7 @@ const useLogin = () => {
             const res = await fetch(import.meta.env.VITE_SERVER_URL + "/api/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
+                credentials: "include",
                 body: JSON.stringify({ email, password }),
             });
 
@@ -26,7 +27,7 @@ const useLogin = () => {
             }
 
             toast.success("Login successful! 🎉");
-
+            localStorage.setItem("user", JSON.stringify(data.user));
             setUserInfo(data.user)
 
             if (data.user.profileSetup) navigate("/chat");

@@ -1,6 +1,6 @@
 export const createAuthSlice = (set)=>(
     {
-        userInfo : undefined,
+        userInfo : JSON.parse(localStorage.getItem("user"))||undefined,
         setUserInfo: (userInfo)=> set({userInfo})
     }
 )

@@ -10,8 +10,8 @@ import {
 } from "../controllers/AuthController.js";
 import { verifyToken } from "../middlewares/AuthMiddleware.js";
 import multer from "multer";
-
-const upload = multer({ dest: "uploads/profiles/" });
+import { storage } from "../middlewares/cloudconfig.js";
+const upload = multer({dest: "/uploads"});
 
 const authRoutes = Router();
 

@@ -17,6 +17,7 @@ const useSignup = () => {
             const res = await fetch(import.meta.env.VITE_SERVER_URL + "/api/auth/signup", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
+                credentials: "include",
                 body: JSON.stringify({ email, password, confirmPassword }),
             });
 
@@ -27,6 +28,7 @@ const useSignup = () => {
             }
 
             toast.success("Signup successful! 🎉");
+            localStorage.setItem("user", JSON.stringify(data.user));
             setUserInfo(data.user);
 
             navigate("/profile")
