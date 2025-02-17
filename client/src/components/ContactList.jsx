@@ -63,7 +63,6 @@ const ContactList = ({ contacts, isChannel = false }) => {
                 )}
               </Avatar>
             )}
-            {console.log(contact.channelImage)}
             {isChannel &&
               (contact.channelImage ? (
                 <Avatar className="h-10 w-10 rounded-full overflow-hidden">

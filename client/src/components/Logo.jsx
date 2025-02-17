@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
+
 const Logo = () => {
-    return (
+  return (
+    <Link to="/about">
       <div className="flex p-5  justify-start items-center gap-2">
         <svg
           id="logo-38"
@@ -26,9 +29,10 @@ const Logo = () => {
             fill="#a16ee8"
           ></path>{" "}
         </svg>
-        <span className="text-2xl font-semibold ">ChatApp</span>
+        <span className="text-2xl font-semibold ">Team Sync AI</span>
       </div>
-    );
-  };
-  
-  export default Logo;
+    </Link>
+  );
+};
+
+export default Logo;
