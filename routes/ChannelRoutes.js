@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { verifyToken } from "../middlewares/AuthMiddleware.js";
 import {
+  addChannelImage,
   createChannel,
   getChannelMessages,
   getUserChannels,
@@ -14,4 +15,11 @@ channelRoutes.get(
   verifyToken,
   getChannelMessages
 );
+
+channelRoutes.post(
+  "/add-channel-image/:channelId",
+  verifyToken,
+  addChannelImage
+);
+
 export default channelRoutes;

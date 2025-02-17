@@ -32,8 +32,16 @@ const ChatHeader = () => {
                   </div>
                 )}
               </Avatar>
+            ) : selectedChatData.channelImage ? (
+              <Avatar className="h-10 w-10 rounded-full overflow-hidden">
+                <AvatarImage
+                  src={selectedChatData.channelImage}
+                  alt="Profile"
+                  className="object-cover w-full h-full bg-black"
+                />
+              </Avatar>
             ) : (
-              <div className="flex bg-[#ffffff22] h-10 w-10 items-center justify-center rounded-full">
+              <div className="bg-[#ffffff22] h-10 w-10 flex items-center justify-center rounded-full">
                 #
               </div>
             )}

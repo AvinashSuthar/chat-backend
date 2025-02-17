@@ -63,11 +63,21 @@ const ContactList = ({ contacts, isChannel = false }) => {
                 )}
               </Avatar>
             )}
-            {isChannel && (
-              <div className="bg-[#ffffff22] h-10 w-10 flex items-center justify-center rounded-full">
-                #
-              </div>
-            )}
+            {console.log(contact.channelImage)}
+            {isChannel &&
+              (contact.channelImage ? (
+                <Avatar className="h-10 w-10 rounded-full overflow-hidden">
+                  <AvatarImage
+                    src={contact.channelImage}
+                    alt="Profile"
+                    className="object-cover w-full h-full bg-black"
+                  />
+                </Avatar>
+              ) : (
+                <div className="bg-[#ffffff22] h-10 w-10 flex items-center justify-center rounded-full">
+                  #
+                </div>
+              ))}
             {isChannel ? (
               <span>{contact.name}</span>
             ) : (

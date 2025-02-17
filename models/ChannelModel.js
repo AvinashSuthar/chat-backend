@@ -32,6 +32,14 @@ const channelSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  channelImage: {
+    type: String,
+    required: false,
+  },
+  public_id: {
+    type: String,
+    required: false,
+  },
 });
 
 channelSchema.pre("findOneAndUpdate", function (next) {
