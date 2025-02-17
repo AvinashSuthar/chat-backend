@@ -1,7 +1,6 @@
 import { compare } from "bcrypt";
 import User from "../models/UserModel.js";
 import jwt from "jsonwebtoken";
-import { renameSync, unlinkSync } from "fs";
 import { v4 as uuidv4 } from "uuid"; // Import UUID for unique file names
 import cloudinary from "cloudinary";
 
