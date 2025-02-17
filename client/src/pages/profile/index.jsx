@@ -5,25 +5,19 @@ import { IoArrowBack } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { apiClient } from "@/lib/api-client";
-import {
-  ADD_PROFILE_IMAGE_ROUTE,
-  HOST,
-  REMOVE_PROFILE_IMAGE_ROUTE,
-  UPDATE_PROFILE_ROUTE,
-} from "@/utils/constants";
+import { UPDATE_PROFILE_ROUTE } from "@/utils/constants";
 import ProfileForm from "./ProfileForm";
 import ProfileAvatar from "./ProfileAvatar";
 function Profile() {
-
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
     color: 0,
-    email: ""
-  })
+    email: "",
+    image: "",
+  });
   const navigate = useNavigate();
   const { userInfo, setUserInfo } = useAppStore();
-  
 
   useEffect(() => {
     if (userInfo.profileSetup) {
@@ -31,13 +25,14 @@ function Profile() {
         firstName: userInfo.firstName,
         lastName: userInfo.lastName,
         email: userInfo.email,
-        color: userInfo.color
-      })
+        color: userInfo.color,
+        image: userInfo.image,
+      });
     } else {
       setUser({
         email: userInfo.email,
-        color: userInfo.color
-      })
+        color: userInfo.color,
+      });
     }
   }, [userInfo]);
 
@@ -58,7 +53,11 @@ function Profile() {
       try {
         const res = await apiClient.post(
           UPDATE_PROFILE_ROUTE,
-          { firstName: user.firstName, lastName:user.lastName, colors: user.color },
+          {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            colors: user.color,
+          },
           { withCredentials: true }
         );
         if (res.status === 200 && res.data) {
@@ -87,7 +86,10 @@ function Profile() {
           <IoArrowBack className="text-4xl lg:text-6xl text-white/90 cursor-pointer" />
         </div>
         <div className="grid grid-cols-2">
-          <ProfileAvatar firstName={user.firstName|| user.email} selectedColor={user.color} />
+          <ProfileAvatar
+            firstName={user.firstName || user.email}
+            selectedColor={user.color}
+          />
           <ProfileForm user={user} setUser={setUser} />
         </div>
         <div className="w-full">

@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  public_id: {
+    type: String,
+    required: false,
+  },
   colors: {
     type: Number,
     required: false,
@@ -40,5 +44,5 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-const User = mongoose.model("Users" , userSchema);
+const User = mongoose.model("Users", userSchema);
 export default User;

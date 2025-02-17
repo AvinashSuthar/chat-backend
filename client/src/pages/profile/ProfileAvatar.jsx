@@ -4,7 +4,6 @@ import { getColor } from "@/lib/utils";
 import { FaTrash, FaPlus } from "react-icons/fa";
 import {
   ADD_PROFILE_IMAGE_ROUTE,
-  HOST,
   REMOVE_PROFILE_IMAGE_ROUTE,
 } from "@/utils/constants";
 import { apiClient } from "@/lib/api-client";
@@ -16,11 +15,12 @@ function ProfileAvatar({ firstName = "", selectedColor }) {
   const fileInputRef = useRef(null);
   const [hovered, setHovered] = useState(false);
   const [image, setImage] = useState(null);
+  console.log(userInfo);
 
   // Sync image state with userInfo.image
   useEffect(() => {
     if (userInfo.image) {
-      setImage(`${HOST}/${userInfo.image}`);
+      setImage(userInfo.image);
     }
   }, [userInfo.image]);
 
@@ -55,7 +55,7 @@ function ProfileAvatar({ firstName = "", selectedColor }) {
         });
         if (res.status === 200 && res.data.image) {
           setUserInfo({ ...userInfo, image: res.data.image });
-          setImage(`${HOST}/${res.data.image}`);
+          setImage(res.data.image);
           toast.success("Image Updated Successfully");
         }
       } catch (error) {

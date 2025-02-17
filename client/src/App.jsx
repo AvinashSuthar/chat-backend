@@ -29,17 +29,15 @@ function App() {
         const res = await apiClient.get(GET_USER_INFO, {
           withCredentials: true,
         });
-        if(res.status === 200 && res.data.id)  {
+        if (res.status === 200 && res.data.id) {
           setUserInfo(res.data);
-        }
-        else{
-          setUserInfo(undefined)
+        } else {
+          setUserInfo(undefined);
         }
       } catch (error) {
         console.log({ error });
-        setUserInfo(undefined)
-
-      }finally{
+        setUserInfo(undefined);
+      } finally {
         setloading(false);
       }
     };
@@ -50,7 +48,11 @@ function App() {
     }
   }, [userInfo, setUserInfo]);
   if (loading) {
-    return <div className="h-screen flex justify-center items-center"><Loader/></div>;
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <Loader />
+      </div>
+    );
   }
   return (
     <BrowserRouter>

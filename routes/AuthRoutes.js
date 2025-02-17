@@ -9,9 +9,9 @@ import {
   logout,
 } from "../controllers/AuthController.js";
 import { verifyToken } from "../middlewares/AuthMiddleware.js";
-import multer from "multer";
-import { storage } from "../middlewares/cloudconfig.js";
-const upload = multer({dest: "/uploads"});
+// import multer from "multer";
+// import { storage } from "../middlewares/cloudconfig.js";
+// const upload = multer({dest: "/uploads"});
 
 const authRoutes = Router();
 
@@ -22,7 +22,6 @@ authRoutes.post("/update-profile", verifyToken, updateProfile);
 authRoutes.post(
   "/add-profile-image",
   verifyToken,
-  upload.single("profile-image"),
   addProfileImage
 );
 authRoutes.delete("/remove-profile-image", verifyToken, removeProfileImage);
