@@ -9,9 +9,7 @@ import {
   logout,
 } from "../controllers/AuthController.js";
 import { verifyToken } from "../middlewares/AuthMiddleware.js";
-// import multer from "multer";
-// import { storage } from "../middlewares/cloudconfig.js";
-// const upload = multer({dest: "/uploads"});
+
 
 const authRoutes = Router();
 
